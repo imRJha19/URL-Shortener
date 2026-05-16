@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafc;
+      color: #111;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: #121212;
+      color: #f0f0f0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .container {
+      background: #1e1e1e;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #0a2540;
+      margin: 0;
+    }
+
+    body.dark-mode h1 {
+      color: #ffd700;
+    }
+
+    .toggle {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    p {
+      text-align: center;
+      color: #555;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    body.dark-mode p {
+      color: #ccc;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    body.dark-mode input {
+      background: #2a2a2a;
+      color: white;
+      border: 1px solid #444;
+    }
+
+    button.submit {
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #0a2540;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    body.dark-mode button.submit {
+      background: #ffd700;
+      color: black;
+    }
+
+    .note {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .note a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>📝 Sign Up</h1>
+      <button class="toggle" id="themeToggle">🌙</button>
+    </div>
+
+    <p>Create your account to manage shortened URLs</p>
+
+    <form method="POST" action="/users/signup">
+      <div>
+        <label>Full Name</label>
+        <input type="text" name="name" required />
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" required />
+      </div>
+
+      <div>
+        <label>Password</label>
+        <input type="password" name="password" required />
+      </div>
+
+      <button type="submit" class="submit">Create Account</button>
+    </form>
+
+    <div class="note">
+      Already have an account?
+      <a href="/login">Login</a>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  </script>
+
+</body>
+</html>

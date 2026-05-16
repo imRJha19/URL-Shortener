@@ -1,0 +1,21 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "It takes a valid URL and return a shorten URL",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Adarsh Jha",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.2",
+    "nanoid": "^5.1.6",
+    "nodemon": "^3.1.11"
+  }
+}
